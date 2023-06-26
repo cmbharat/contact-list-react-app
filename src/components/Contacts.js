@@ -21,31 +21,6 @@ const Contacts = () => {
   };
 
   console.log(users);
-  const addContact = async (name, email) => {
-    await fetch("https://jsonplaceholder.typicode.com/users", {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-        email: email,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((res) => {
-        if (res.status !== 201) {
-          return;
-        } else {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        setUsers((users) => [...users, data]);
-      })
-      .catch((err) => {
-        console.log("error------->", err);
-      });
-  };
 
   const deleteContact = async (id) => {
     console.log("inside delete contact");
@@ -74,17 +49,18 @@ const Contacts = () => {
 
   return (
     <>
-      <AddContact addContact={addContact} />
-      <div className="grid-container">
-        {users.map((user) => (
-          <ContactCard
-            key={user.id}
-            id={user.id}
-            contact={user}
-            deleteContact={deleteContact}
-            updateContact={updateContact}
-          />
-        ))}
+      <div className="App">
+        <div className="grid-container">
+          {users.map((user) => (
+            <ContactCard
+              key={user.id}
+              id={user.id}
+              contact={user}
+              deleteContact={deleteContact}
+              updateContact={updateContact}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

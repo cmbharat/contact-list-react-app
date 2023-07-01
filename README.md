@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# The Contacts List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Contact List App is contact management App which fetches and displays user data from the API, allows users to add new contacts, update existing ones, and remove contacts. This comprehensive feature set makes it an invaluable tool for organizing and maintaining a contact list, providing a smooth and user-friendly experience.
 
-## Available Scripts
++ Fetch and Display User Contacts: The React.js Contact List App fetches user data from API (https://jsonplaceholder.typicode.com/users) and displays it in an organized and user-friendly manner. The app utilizes the API to retrieve contact information, including names, emails and dynamically renders it on the interface. Users can effortlessly browse through the list of contacts, making it convenient to access essential information.
 
-In the project directory, you can run:
++ Add and Update Contacts: This Contact List App enables users to add and update contacts directly from the application. By leveraging the POST and PUT API calls, the app allows users to create and modify contact entries. Adding a new contact triggers a POST request to the API (this is a dummy call). Similarly, updating an existing contact triggers a PUT request(this is a dummy call).
 
-### `npm start`
++ Contact Deletion: In This React.js Contact List App Users can easily remove contacts from the list by initiating a DELETE request to the API (this is a dummy call).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Key Features
++ Display List of Users fetched from https://jsonplaceholder.typicode.com/users
++ Add User Feature after entering Basic Details of User
++ Update the Existing User by Click of button
++ Delete the Existing User by Click of button
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
++ HTML
++ CSS
++ JavaScript
++ React Js
 
-### `npm run build`
+## Demo
+Check out the live demo of the application at :[]() 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone or download the repository to your local machine
+Open the project in your code editor
+Open the index.html file in your web browser to run the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Please make sure to update tests as appropriate.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
+Author [C M Bharat](https://github.com/cmbharat)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Acknowledgments
+[https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This site was built using [GitHub Pages](https://pages.github.com/).

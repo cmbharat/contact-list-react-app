@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddContact = () => {
+const AddContact = ({ addContact }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     addContact(e.target.name.value, e.target.email.value);
@@ -8,37 +8,10 @@ const AddContact = () => {
     e.target.email.value = "";
   };
 
-  const addContact = async (name, email) => {
-    await fetch("https://jsonplaceholder.typicode.com/users", {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-        email: email,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((res) => {
-        if (res.status !== 201) {
-          return;
-        } else {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        // setUsers((users) => [...users, data]);
-        console.log("add user to list========>", data);
-      })
-      .catch((err) => {
-        console.log("error------->", err);
-      });
-  };
-
   return (
     <>
       <form className="form-inline" onSubmit={handleOnSubmit}>
-        <label className="sr-only" for="inlineFormInputName2">
+        <label className="sr-only" htmlFor="name">
           Name
         </label>
         <input
@@ -48,7 +21,8 @@ const AddContact = () => {
           name="name"
           placeholder="Enter Your Name"
         />
-        <label className="sr-only" for="inlineFormInputName2">
+
+        <label className="sr-only" htmlFor="email">
           Email
         </label>
         <input

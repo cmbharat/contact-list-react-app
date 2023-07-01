@@ -20,7 +20,6 @@ const Contacts = () => {
     await fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setUsers(data);
         setLoading(false);
       })
@@ -49,7 +48,64 @@ const Contacts = () => {
       })
       .then((data) => {
         setUsers((users) => [...users, data]);
-        console.log("add user to list========>", data);
+      })
+      .catch((err) => {
+        console.log("error------->", err);
+      });
+  };
+
+  const deleteContact = async (id) => {
+    console.log("inside delete contact");
+    await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          return;
+        } else {
+          setUsers(
+            users.filter((user) => {
+              return user.id !== id;
+            })
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const editContact = async (updatedData) => {
+    await fetch(
+      `https://jsonplaceholder.typicode.com/users/${updatedData.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updatedData),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.status !== 200) {
+          return;
+        } else {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        const newContacts = users.map((item) => {
+          if (item.id === data.id) {
+            const updatedContact = {
+              id: data.id,
+              ...data,
+            };
+            return updatedContact;
+          }
+          return item;
+        });
+        setUsers(newContacts);
+        setShowAdd(true);
       })
       .catch((err) => {
         console.log("error------->", err);
@@ -85,73 +141,9 @@ const Contacts = () => {
     });
   };
 
-  const deleteContact = async (id) => {
-    console.log("inside delete contact");
-    await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          return;
-        } else {
-          setUsers(
-            users.filter((user) => {
-              return user.id !== id;
-            })
-          );
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
     editContact(user);
-  };
-
-  const editContact = async (updatedData) => {
-    console.log("inside editcontact--->", updatedData);
-    await fetch(
-      `https://jsonplaceholder.typicode.com/users/${updatedData.id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(updatedData),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }
-    )
-      .then((res) => {
-        if (res.status !== 200) {
-          return;
-        } else {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        // setUsers((users) => [...users, data]);
-        console.log("updated user========>", data);
-        const newContacts = users.map((item) => {
-          if (item.id === data.id) {
-            const t = {
-              id: data.id,
-              ...data,
-            };
-            console.log("tttt", t);
-            return t;
-          }
-          return item;
-        });
-        console.log("newContacts------->", newContacts);
-        setUsers(newContacts);
-        setShowAdd(true);
-      })
-      .catch((err) => {
-        console.log("error------->", err);
-      });
   };
 
   return (
@@ -231,7 +223,7 @@ const Contacts = () => {
           <tbody>{renderTableRows()}</tbody>
         </Table>
       ) : (
-        <div>No Users</div>
+        <div>No Users to Show</div>
       )}
     </>
   );

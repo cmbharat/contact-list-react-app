@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import React, { useState } from "react";
 
 const EditContact = ({ editContact, user }) => {
   const [name, setName] = useState("");

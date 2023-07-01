@@ -10,7 +10,12 @@ const AddContact = ({ addContact }) => {
 
   return (
     <>
-      <form className="form-inline" onSubmit={handleOnSubmit}>
+      <h1 style={{ marginLeft: 100 }}>Add Contact</h1>
+      <form
+        className="form-inline"
+        onSubmit={handleOnSubmit}
+        style={{ width: 500 }}
+      >
         <label className="sr-only" htmlFor="name">
           Name
         </label>
@@ -20,6 +25,7 @@ const AddContact = ({ addContact }) => {
           id="name"
           name="name"
           placeholder="Enter Your Name"
+          required
         />
 
         <label className="sr-only" htmlFor="email">
@@ -31,10 +37,11 @@ const AddContact = ({ addContact }) => {
           id="email"
           name="email"
           placeholder="Enter Your Email"
+          required
         />
 
         <button type="submit" className="btn btn-primary mb-2">
-          Submit
+          Add
         </button>
       </form>
     </>

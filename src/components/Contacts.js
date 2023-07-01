@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../styles/contact.css";
 import Table from "react-bootstrap/Table";
 import AddContact from "./AddContact";
 
@@ -120,12 +119,17 @@ const Contacts = () => {
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>
-            <button
-              onClick={() => deleteContact(user.id)}
-              className="btn btn-danger"
-            >
-              Delete
-            </button>
+            {showAdd ? (
+              <button
+                onClick={() => deleteContact(user.id)}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            ) : (
+              <></>
+            )}
+            &nbsp;&nbsp;
             <button
               onClick={() => {
                 setShowAdd(false);
@@ -152,7 +156,12 @@ const Contacts = () => {
         <AddContact addContact={addContact} />
       ) : (
         <>
-          <form className="form-inline" onSubmit={handleOnSubmit}>
+          <h1 style={{ marginLeft: 100 }}>Edit Contact</h1>
+          <form
+            className="form-inline"
+            onSubmit={handleOnSubmit}
+            style={{ width: 500 }}
+          >
             <label className="sr-only" htmlFor="id">
               Id
             </label>
@@ -204,27 +213,34 @@ const Contacts = () => {
             />
 
             <button type="submit" className="btn btn-primary mb-2">
-              Submit
+              Update
             </button>
           </form>
         </>
       )}
-      {loading ? (
-        <h1>Loading</h1>
-      ) : users.length > 0 ? (
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>{renderTableRows()}</tbody>
-        </Table>
-      ) : (
-        <div>No Users to Show</div>
-      )}
+      <div className="contacts">
+        <h1 className="contacts__title">My contacts</h1>
+
+        {loading ? (
+          <h1>Loading</h1>
+        ) : users.length > 0 ? (
+          <section className="contacts__section">
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>{renderTableRows()}</tbody>
+            </Table>
+          </section>
+        ) : (
+          <h2 className="contacts__title">No Users to Show....</h2>
+        )}
+      </div>
     </>
   );
 };

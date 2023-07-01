@@ -23,7 +23,7 @@ Contact List App is contact management App which fetches and displays user data 
 + React Js
 
 ## Demo
-Check out the live demo of the application at :[]() 
+Check out the live demo of the application at :[https://cmbharat.github.io/contact-list-react-app/](https://cmbharat.github.io/contact-list-react-app/) 
 
 ## Installation
 
